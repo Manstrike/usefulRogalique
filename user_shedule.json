@@ -1,0 +1,203 @@
+{
+	"user": "AlexDark",
+	"sheduler": [
+		{
+			"less_number": 2,
+			"week_type": "все",
+			"subs": {
+				"subject": "Случайные процессы",
+				"teacher": "Востров",
+				"room": "322",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 3,
+			"week_type": "все",
+			"subs": {
+				"subject": "Мат.экономика",
+				"teacher": "Диленко",
+				"room": "322",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 1,
+			"week_type": "четная",
+			"subs": {
+				"subject": "Политология",
+				"teacher": "Шановская",
+				"room": "322",
+				"building": "ГУК\r\n",
+				"type": "практика"
+			}
+		},
+		{
+			"less_number": 1,
+			"week_type": "нечетная",
+			"subs": {
+				"subject": "Эконометрия",
+				"teacher": "Юхименко",
+				"room": "322",
+				"building": "ГУК\r\n",
+				"type": "практика"
+			}
+		},
+		{
+			"less_number": 2,
+			"week_type": "все",
+			"subs": {
+				"subject": "Экология",
+				"teacher": "Юхименко",
+				"room": "322",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 3,
+			"week_type": "четная",
+			"subs": {
+				"subject": "Случайные процессы",
+				"teacher": "Востров",
+				"room": "321",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 3,
+			"week_type": "нечетная",
+			"subs": {
+				"subject": "Мат.экономика",
+				"teacher": "Диленко",
+				"room": "321",
+				"building": "ГУК\r\n",
+				"type": "практика"
+			}
+		},
+		{
+			"less_number": 1,
+			"week_type": "все",
+			"subs": {
+				"subject": "Нейронные сети",
+				"teacher": "Полякова",
+				"room": "337",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 2,
+			"week_type": "все",
+			"subs": {
+				"subject": "Базы данных",
+				"teacher": "Корнилова",
+				"room": "337",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 3,
+			"week_type": "все",
+			"subs": {
+				"subject": "Базы данных",
+				"teacher": "Корнилова",
+				"room": "337",
+				"building": "ГУК\r\n",
+				"type": "лаборатоная"
+			}
+		},
+		{
+			"less_number": 1,
+			"week_type": "все",
+			"subs": {
+				"subject": "Политология",
+				"teacher": "Шановская",
+				"room": "409",
+				"building": "ФАФТ",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 2,
+			"week_type": "все",
+			"subs": {
+				"subject": "Теория расп.образов",
+				"teacher": "Крылов",
+				"room": "426",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 3,
+			"week_type": "все",
+			"subs": {
+				"subject": "Экология",
+				"teacher": "Карашушко",
+				"room": "409",
+				"building": "ФАФТ",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 2,
+			"week_type": "четная",
+			"subs": {
+				"subject": "Методы оптимизации",
+				"teacher": "Юхименко",
+				"room": "316",
+				"building": "Хим",
+				"type": "практика"
+			}
+		},
+		{
+			"less_number": 1,
+			"week_type": "четная",
+			"subs": {
+				"subject": "Теория расп.образов",
+				"teacher": "Крылов",
+				"room": "409",
+				"building": "ФАФТ",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 1,
+			"week_type": "нечетная",
+			"subs": {
+				"subject": "Нейронные сети",
+				"teacher": "Ищенко",
+				"room": "337",
+				"building": "ГУК\r\n",
+				"type": "практика"
+			}
+		},
+		{
+			"less_number": 2,
+			"week_type": "нечетная",
+			"subs": {
+				"subject": "Методы оптимизации",
+				"teacher": "Юхименко",
+				"room": "322",
+				"building": "ГУК\r\n",
+				"type": "лекция"
+			}
+		},
+		{
+			"less_number": 3,
+			"week_type": "все",
+			"subs": {
+				"subject": "Теория расп.образов",
+				"teacher": "Ищенко",
+				"room": "337",
+				"building": "ГУК\r\n",
+				"type": "лаборатоная"
+			}
+		}
+	]
+}

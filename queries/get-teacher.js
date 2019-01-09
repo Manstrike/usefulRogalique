@@ -31,7 +31,8 @@ async function getTeacher(teacherId){
             const teacher = [`${query[0][0].lastname_teachers}`,
                              `${query[0][0].firstname_teachers}`,
                              `${query[0][0].secondname_teachers}`];
-            const res = [teacher.join(' '), query2[0][0].name_positions];
+            //const res = [teacher.join(' '), query2[0][0].name_positions];
+            const res = [teacher[0], query2[0][0].name_positions];
 
             return res;
         }

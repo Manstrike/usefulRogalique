@@ -1,0 +1,456 @@
+{
+    "username" : "",
+    "groupCode": "",
+    "sheduler":[
+            {
+            "less1_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less2_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less3_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less4_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less4_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            }
+        },
+    
+            {
+            "less1_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less2_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less3_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less4_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less4_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            }
+        },
+    
+            {
+            "less1_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less2_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less3_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less4_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less4_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            }
+        },
+    
+            {
+            "less1_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less2_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less3_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less4_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less4_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            }
+        },
+    
+            {
+            "less1_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less1_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less2_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less2_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less3_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less3_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+    
+            "less4_even": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less4_uneven": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            },
+            "less_any": {
+                "subject": "",
+                "teacher": "",
+                "room": "",
+                "building": "",
+                "less_type": ""
+            }
+        }
+    ]
+   
+}
