@@ -6,6 +6,7 @@ const userReg = require('./queries/set-user');
 const userGet = require('./queries/get-user.js');
 const getShed = require('./queries/get-shedule.js');
 const getDailyShed = require('./queries/get-shedule-by-day.js');
+const vizualizeShed = require('./user-relat/vis_shed.js');
 const file = 'Sheduler.xlsx';
 
 const token  = env.bot_token;
@@ -60,17 +61,10 @@ async function getDailyShedule(msg){
     return false;
 }
 
-async function readXLSX(file){
-    const workbook = new Excel.Workbook();
-    workbook.xlsx.readFile(file)
-        .then(async () =>{
+async function visualizeShedule(msg){
+    const res = await vizualizeShed(msg);
 
-            return workbook;
-        })
-}
 
-async function writeXLSX(data){
-    const workbook = 0;
 }
 
 
@@ -91,10 +85,10 @@ async function initBot(){
     };
     const match = [
         ``,
-        `2`,
+        `4`,
     ];
 
-    const checkRes = false;
-    console.dir(checkRes);
+    const checkRes = await getDailyShedule(msg);
+    console.log(checkRes);
 }
 initBot();

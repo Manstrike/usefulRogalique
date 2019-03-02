@@ -23,7 +23,7 @@ async function getGroup(groupId){
     if(query[0].length>0){
         return query[0];
     }
-   
+   console.dir(query[0]);
     return false;
 }
 

@@ -6,6 +6,7 @@ const conn = require('./config-conn.js');
      */
 
 let connection;
+
 async function initDatabase(){
     connection = await conn();
 };
@@ -31,6 +32,8 @@ const regUser = async function setUser(msg,match){
     }
 
     const name = username === undefined ? fullName : username;
+
+    console.log(name,chatID,groupCode);
 
     const query = await connection.execute(`
         INSERT INTO user (name, chatID, group_code)
