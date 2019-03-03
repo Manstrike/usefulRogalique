@@ -1,62 +1,55 @@
-const getShed = require('../queries/get-shedule.js')
+const getShed = require('../queries/get-shedule.js');
 
 async function sheduleRepair(msg){
-    
+    this.msg = msg;
     const shedule = await getShed({msg: msg});
     const structure = [];
 
-    const days
+    const result =[];
+    
+    const days = new Set(shedule.map(d => d.day));
+    for (const item of days) {
+        const arr = [];
+        const temper = shedule
+            .filter(b => b.day === item)
+        for (const obj of temper) {
+            arr.push({number: obj.l_num, week: obj.week, act: obj.arr});
+        }
+        structure.push({day: item, activ: arr});
+    }
+    //console.dir(structure, {depth: 3});
 
-
-    for (const dayOrig of shedule) {
+    for (const dayOrig of structure) {
         
-        const temp = [];
-        let day = dayOrig;
-        console.log(day);
+        const temp =[];
+
+        let day = [...dayOrig.activ];
+        //console.log(day);
         while(day.length > 0){
-            const lesson = day[0].l_num;
+            const lesson = day[0].number;
             
             const activities = day
-                .filter( a => a.l_num === lesson)
+                .filter( a => a.number === lesson)
                 .sort((a1, a2) => a1.week - a2.week)
                 .map(a=> {
                     return {
-                        name: a.arr,
+                        name: a.act,
                         isEvenWeek: a.week === 0,
                     };
                 });
 
                 temp.push({lesson, activities});
 
-                day = day.filter(a => a.l_num !== lesson);
+                day = day.filter(a => a.number !== lesson);
         };
-        structure.push(temp);
+        result.push(temp);
     };
 
-   
 
-   console.log(structure);
+    //console.dir(result,{depth: Number.POSITIVE_INFINITY});
 
-    return structure;
+    return result;
 }
 
-async function init(){
-        const msg = {
-            date: 1545998946,
-            chat: {
-                id: 204521174,
-                first_name: 'Alex',
-                username: 'AlexDark',
-            },
-            from: {
-                id: 204521174,
-                first_name: 'Alex',
-                username: 'AlexDark',
-            },
-            text: 'registration',
-        };
-    const res = await sheduleRepair(msg);
 
-};
-
-init();
+module.exports = sheduleRepair;

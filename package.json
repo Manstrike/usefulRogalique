@@ -4,6 +4,7 @@
   "description": "schedule bot",
   "main": "index.js",
   "dependencies": {
+    "ejs": "^2.6.1",
     "exceljs": "^1.6.3",
     "googleapis": "^27.0.0",
     "moment": "^2.23.0",

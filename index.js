@@ -6,7 +6,8 @@ const userReg = require('./queries/set-user');
 const userGet = require('./queries/get-user.js');
 const getShed = require('./queries/get-shedule.js');
 const getDailyShed = require('./queries/get-shedule-by-day.js');
-const vizualizeShed = require('./user-relat/vis_shed.js');
+const vizualizeShed = require('./user_relat/vis-shed.js');
+const Printer = require('./classes/printer.js');
 const file = 'Sheduler.xlsx';
 
 const token  = env.bot_token;
@@ -63,8 +64,8 @@ async function getDailyShedule(msg){
 
 async function visualizeShedule(msg){
     const res = await vizualizeShed(msg);
-
-
+    const print = new Printer(res);
+    return print.printList();
 }
 
 
@@ -88,7 +89,7 @@ async function initBot(){
         `4`,
     ];
 
-    const checkRes = await getDailyShedule(msg);
+    const checkRes = await visualizeShedule(msg);
     console.log(checkRes);
 }
 initBot();
