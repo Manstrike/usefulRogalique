@@ -14,26 +14,26 @@
           <th class="tg-0lax"></th>
         </tr>
 
-        <%for(const item of obj[i]){%>
+        <%for(let item = 0; item < obj[i].length; item++){%>
           <%/*const activities = item.find(a=> a.lesson === i+1).activities;*/%>
-            <%if(item.activities.length > 1){%>
+            <%if(obj[i][item].activities.length > 1){%>
               <tr>
-                <td class="tg-0lax"><%=i+1%></td>
-                <td class="tg-0lax"><%=item.activities[0].name.join(", ")%></td>
+                <td class="tg-0lax"><%=item+1%></td>
+                <td class="tg-0lax"><%=obj[i][item].activities[0].name.join(", ")%></td>
                 <td class="tg-0lax"></td>
               </tr>
               <tr>
                 <td class="tg-0lax"></td>
-                <td class="tg-0lax"><%=item.activities[1].name.join(", ")%></td>
+                <td class="tg-0lax"><%=obj[i][item].activities[1].name.join(", ")%></td>
                 <td class="tg-0lax"></td>
               </tr>
           <%}else{%>
               <tr>
-                <td class="tg-0lax"><%=i+1%></td>
-                <td class="tg-0lax"><%=item.activities[0].name.join(", ")%></td>
+                <td class="tg-0lax"><%=item+1%></td>
+                <td class="tg-0lax"><%=obj[i][item].activities[0].name.join(", ")%></td>
                 <td class="tg-0lax"></td>
             </tr>
           <%};%>
-        <% };%>
-         </table>
+        <%};%>
+        </table>
     <%}%>

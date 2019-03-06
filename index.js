@@ -8,6 +8,8 @@ const getShed = require('./queries/get-shedule.js');
 const getDailyShed = require('./queries/get-shedule-by-day.js');
 const vizualizeShed = require('./user_relat/vis-shed.js');
 const Printer = require('./classes/printer.js');
+const getUserConfig = require('./user_relat/user-config.js');
+const CronJob = require('cron').CronJob;
 const file = 'Sheduler.xlsx';
 
 const token  = env.bot_token;
@@ -62,12 +64,51 @@ async function getDailyShedule(msg){
     return false;
 }
 
-async function visualizeShedule(msg){
+/*
+ Passed
+ */
+
+ async function visualizeShedule(msg){
     const res = await vizualizeShed(msg);
     const print = new Printer(res);
+
     return print.printList();
 }
 
+
+
+async function configTime(msg){
+    //const res = await userGet(msg);
+    const res={
+        notif_config: '01:03:00',
+    }
+    const job = new CronJob('* * * * * *', async()=>{
+        const currTime = await convertTime();
+
+        console.log(currTime);
+        if(currTime === res.notif_config){
+            console.log('ALERT');
+        }
+    });
+    await job.start();
+    return res;
+
+}
+
+async function convertTime(){
+    const date = new Date();
+
+    const hours = date.getHours();
+    const hoursStr = hours.toString().padStart(2, '0');
+
+    const minutes = date.getMinutes();
+    const minutesStr = minutes.toString().padStart(2, '0');
+
+    const seconds = date.getSeconds();
+    const secondsStr = seconds.toString().padStart(2, '0');
+
+    return `${hoursStr}:${minutesStr}:${secondsStr}`;
+}
 
 async function initBot(){
     const msg = {
@@ -89,7 +130,7 @@ async function initBot(){
         `4`,
     ];
 
-    const checkRes = await visualizeShedule(msg);
-    console.log(checkRes);
+    const checkRes = await configTime(msg);
+    //console.dir(checkRes[0].last_send);
 }
 initBot();
