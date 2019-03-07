@@ -8,7 +8,10 @@ const getShed = require('./queries/get-shedule.js');
 const getDailyShed = require('./queries/get-shedule-by-day.js');
 const vizualizeShed = require('./user_relat/vis-shed.js');
 const Printer = require('./classes/printer.js');
-const getUserConfig = require('./user_relat/user-config.js');
+const getUserConfig = require('./queries/add-alert.js');
+const setMark = require('./queries/set-mark');
+const convertDate = require('./user_relat/convert-date');
+const convertTime = require('./user_relat/convert-time');
 const CronJob = require('cron').CronJob;
 const file = 'Sheduler.xlsx';
 
@@ -75,7 +78,9 @@ async function getDailyShedule(msg){
     return print.printList();
 }
 
-
+/*
+Passed
+*/
 
 async function configTime(msg){
     //const res = await userGet(msg);
@@ -85,29 +90,23 @@ async function configTime(msg){
     const job = new CronJob('* * * * * *', async()=>{
         const currTime = await convertTime();
 
-        console.log(currTime);
         if(currTime === res.notif_config){
             console.log('ALERT');
+            const currDate = await convertDate();
+            const lastSend = `${currDate} ${currTime}`;
+            const res = await setMark(msg.chat.id, lastSend);
         }
     });
     await job.start();
-    return res;
 
+    return res;
 }
 
-async function convertTime(){
-    const date = new Date();
 
-    const hours = date.getHours();
-    const hoursStr = hours.toString().padStart(2, '0');
-
-    const minutes = date.getMinutes();
-    const minutesStr = minutes.toString().padStart(2, '0');
-
-    const seconds = date.getSeconds();
-    const secondsStr = seconds.toString().padStart(2, '0');
-
-    return `${hoursStr}:${minutesStr}:${secondsStr}`;
+async function testDate(){
+    const date = await getDailyShed({day:4});
+    return date;
+    
 }
 
 async function initBot(){
@@ -130,7 +129,7 @@ async function initBot(){
         `4`,
     ];
 
-    const checkRes = await configTime(msg);
-    //console.dir(checkRes[0].last_send);
+    const checkRes = await testDate();
+    console.dir(checkRes);
 }
 initBot();

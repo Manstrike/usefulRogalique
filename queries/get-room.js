@@ -2,6 +2,12 @@ const conn = require('./config-conn.js');
 
 let connection;
 
+/**
+ * 
+ * @param {Number} roomId ID number of room.
+ * @returns {Array,Boolean} If success, returns array with info, if not - returns false.
+ */
+
 async function getRoom(roomId){
     this.roomId = roomId;
 

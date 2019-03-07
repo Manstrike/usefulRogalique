@@ -1,0 +1,2 @@
+ALTER TABLE user ADD COLUMN notif_config TIME;
+ALTER TABLE user ADD COLUMN last_send VARCHAR;

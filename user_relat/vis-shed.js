@@ -1,5 +1,11 @@
 const getShed = require('../queries/get-shedule.js');
 
+/**
+ * 
+ * @param {Object} msg User msg for identification.
+ * @returns {Array} Structurised array with shcedule
+ */
+
 async function sheduleRepair(msg){
     this.msg = msg;
     const shedule = await getShed({msg: msg});
