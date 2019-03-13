@@ -4,17 +4,15 @@ let connection;
 
 /**
  * 
- * @param {Object} msg User's message to perform query.
+ * @param {Number} chatId User's ID.
  * @returns {Object} Database object.
  */
 
-const getUser = async function getUser(msg){
+const getUser = async function getUser(chatId){
 
     connection = await conn();
     
-    this.msg = msg;
-    
-    const chatId = msg.chat.id;
+    this.chatId = chatId;
     
     const query = await connection.execute(`
         SELECT * FROM user 

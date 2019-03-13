@@ -10,9 +10,10 @@ let connection;
  * @returns {False} On failure.
  */
 
-async function getShedByDay({msg, day}){
+async function getShedByDay({msg, day, chatId}){
     this.msg = msg;
     this.day = day;
+    this.chatId = chatId;
 
     connection = await conn();
 
@@ -26,7 +27,7 @@ async function getShedByDay({msg, day}){
         return false;
     }
     else{
-        const res = await scheduleWithDay(day);
+        const res = await scheduleWithDay(day,chatId);
 
         if(res){
             return res;
@@ -68,7 +69,15 @@ async function scheduleWithMSG(msg){
     return false;
 }
 
-async function scheduleWithDay(day){
+async function scheduleWithDay(day, chatId){
+    const date = new Date();
+    var currWeek = moment().weeksInYear();
+    if(currWeek % 2 ===0){
+        currWeek = 1;
+    }else{
+        currWeek = 0;
+    }
+
     const getDayID = await connection.execute(`
         SELECT id_days
         FROM days 
@@ -76,7 +85,7 @@ async function scheduleWithDay(day){
     `);
 
     const getShedule = await getShed({
-        msg: msg,
+        chatId: chatId,
         day: getDayID[0][0].id_days,
         week: currWeek,
     });

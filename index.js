@@ -1,135 +1,50 @@
 const TelegramBot = require('node-telegram-bot-api');
-const moment = require('moment');
-const Excel = require('exceljs');
 const env = require('./queries/env-db');
-const userReg = require('./queries/set-user');
-const userGet = require('./queries/get-user.js');
-const getShed = require('./queries/get-shedule.js');
-const getDailyShed = require('./queries/get-shedule-by-day.js');
-const vizualizeShed = require('./user_relat/vis-shed.js');
-const Printer = require('./classes/printer.js');
-const getUserConfig = require('./queries/add-alert.js');
-const setMark = require('./queries/set-mark');
-const convertDate = require('./user_relat/convert-date');
-const convertTime = require('./user_relat/convert-time');
-const CronJob = require('cron').CronJob;
-const file = 'Sheduler.xlsx';
+const getUser = require('./queries/get-user');
+const setUser = require('./queries/set-user');
+const schedConvert2pdf = require('./user_relat/sched-convert2pdf');
+
+
 
 const token  = env.bot_token;
 const bot = new TelegramBot(token,{polling:true});
 
-/*
-Passed
- */
-
-async function registration(msg,match){
-    const res = await userReg(msg,match);
-    console.log(res);
-   
-    return true;
-};
-
-/*
-Passed
-*/
-
-async function checkUser(msg){
-    const res = await userGet(msg);
-    
-    return res;
-};
-
-/*
-Passed
-*/
-
-async function getShedule(msg){
-    const res = await getShed({msg: msg});
-    
-    if(res){
-        return res;
-    }
-    
-    return false;
-};
-
-/*
-Passed
-*/
-
-async function getDailyShedule(msg){
-    const res = await getDailyShed(msg);
-   
-    if(res){
-        return res;
-    }
-    
-    return false;
-}
-
-/*
- Passed
- */
-
- async function visualizeShedule(msg){
-    const res = await vizualizeShed(msg);
-    const print = new Printer(res);
-
-    return print.printList();
-}
-
-/*
-Passed
-*/
-
-async function configTime(msg){
-    //const res = await userGet(msg);
-    const res={
-        notif_config: '01:03:00',
-    }
-    const job = new CronJob('* * * * * *', async()=>{
-        const currTime = await convertTime();
-
-        if(currTime === res.notif_config){
-            console.log('ALERT');
-            const currDate = await convertDate();
-            const lastSend = `${currDate} ${currTime}`;
-            const res = await setMark(msg.chat.id, lastSend);
+async function botInit(){
+    bot.onText(/\/start/, async (msg) =>{
+        const user = await getUser(msg.chat.id);
+        if(user[0] && user[0].chatID){
+            await bot.sendMessage(msg.chat.id,`Даров, ${user[0].name}`);
+        }
+        else{
+            await bot.sendMessage(msg.chat.id,`Похоже, мы с Вами еще не знакомы. Я - Рогалик. Полезный Рогалик.
+                                    Чтобы продолжить, введите команду /reg и код вашей группы.
+                                    Например, /reg ГГ123`);
         }
     });
-    await job.start();
 
-    return res;
+    bot.onText(/\/reg (.+)/, async (msg, match) =>{
+        const checkUser = await getUser(msg.chat.id);
+        if(checkUser[0] && checkUser[0].chatID){
+            await bot.sendMessage(msg.chat.id,`Кажется, вы уже в базе.`);
+        }else{
+            const tryReg = await setUser(msg, match);
+            if(tryReg){
+                await bot.sendMessage(msg.chat.id,`Успешно!`);
+            }
+        }
+    });
+
+    bot.onText(/\/review/, async (msg) =>{
+        const schedule = await schedConvert2pdf(msg);
+        if(schedule){
+            const fileOptions = {
+                filename: `Расписание`,
+            }
+            await bot.sendDocument(msg.chat.id,schedule,{},fileOptions);
+        }else{
+            await bot.sendMessage(msg.chat.id, `Неудачно`);
+        }
+    })
 }
 
-
-async function testDate(){
-    const date = await getDailyShed({day:4});
-    return date;
-    
-}
-
-async function initBot(){
-    const msg = {
-        date: 1545998946,
-        chat: {
-            id: 204521174,
-            first_name: 'Alex',
-            username: 'AlexDark',
-        },
-        from: {
-            id: 204521174,
-            first_name: 'Alex',
-            username: 'AlexDark',
-        },
-        text: 'registration',
-    };
-    const match = [
-        ``,
-        `4`,
-    ];
-
-    const checkRes = await testDate();
-    console.dir(checkRes);
-}
-initBot();
+botInit();

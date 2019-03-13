@@ -10,19 +10,19 @@ let connection;
 
 /**
  * 
- * @param {Object} msg User's message.
+ * @param {Number} chatId User's message.
  * @returns {Object} Database object on success.
  * @returns {False} On failure.
  */
 
-async function getShedule({msg, day , week}){
-    this.msg = msg;
+async function getShedule({chatId, day , week}){
+    this.chatId = chatId;
     this.day = day;
     this.week = week;
 
     connection = await conn();
     
-    const user = await getUser(msg);
+    const user = await getUser(chatId);
     
     if(user == false){
         return false;

@@ -8,7 +8,7 @@ const getShed = require('../queries/get-shedule.js');
 
 async function sheduleRepair(msg){
     this.msg = msg;
-    const shedule = await getShed({msg: msg});
+    const shedule = await getShed({chatId: msg.chat.id});
     const structure = [];
 
     const result =[];

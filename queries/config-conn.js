@@ -1,10 +1,12 @@
 const mysql = require('mysql2/promise');
+const env = require('./env-db');
+
 
 async function connectionConfig(){
     const connection = await mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'Password123',
+        password: env.db_password,
         database: 'shedulerdb',
     });
 

@@ -3,7 +3,7 @@ const configConn = require('./config-conn');
 let connection;
 
 /**
- * 
+ * user's subscriprion for alerts
  * @param {Number} userId User's ID.
  * @param {String} dateTime User's setting.
  * @returns {Boolean} 
