@@ -1,6 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
 const http = require('http');
-const env = require('./queries/env-db');
 const getUser = require('./queries/get-user');
 const setUser = require('./queries/set-user');
 const schedConvert2pdf = require('./user_relat/sched-convert2pdf');
