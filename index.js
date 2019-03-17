@@ -79,15 +79,21 @@ async function botInit(){
 
 async function alertUsers(){
     const userBase = await getAllUsers();
-    console.dir(userBase[0]);
-    const job = new CronJob('* * * * * *', async()=>{
+    //console.dir(userBase[0]);
+    const job = new CronJob('* 1 * * * *', async()=>{
         const currTime = await convertTime();
-        console.log(currTime);
+        //console.log(currTime);
         for (const user of userBase) {
             if(currTime === user.notif_config){
                 const currDay = moment().weekday();
                 const dailySched = await getSheduleByDay({day: currDay, chatId: user.chatID});
-                await bot.sendMessage(user.chatID, `${dailySched[0]}`);
+                const arr = [];
+                for (const less of dailySched){
+                    const temp = [`${less.l_num}) -${less.arr.join(', ')}`]
+                    arr.push(temp);
+                }
+
+                await bot.sendMessage(user.chatID, arr.join('\n'));
                 const currDate = await convertDate();
                 const lastSend = `${currDate} ${currTime}`;
                 const res = await setMark(user.chatID, lastSend);
