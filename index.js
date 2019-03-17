@@ -1,4 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
+const http = require('http');
 const env = require('./queries/env-db');
 const getUser = require('./queries/get-user');
 const setUser = require('./queries/set-user');
@@ -100,3 +101,10 @@ async function alertUsers(){
 }
 
 botInit();
+
+
+
+http.createServer(function(request, response){
+     
+    response.end("Hello world!");
+}).listen(3000);
