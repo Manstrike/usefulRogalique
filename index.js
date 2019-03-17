@@ -17,7 +17,7 @@ require('dotenv').config();
 
 
 
-const token  = proceыs.env.TOKEN;
+const token  = process.env.TOKEN;
 const bot = new TelegramBot(token,{polling:true});
 
 async function botInit(){
