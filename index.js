@@ -13,11 +13,11 @@ const getSheduleByDay = require('./queries/get-shedule-by-day');
 const moment = require("moment");
 const convertDate = require('./user_relat/convert-date');
 const setMark = require('./queries/set-mark');
+require('dotenv').config();
 
 
 
-
-const token  = env.bot_token;
+const token  = proceыs.env.TOKEN;
 const bot = new TelegramBot(token,{polling:true});
 
 async function botInit(){
@@ -107,4 +107,4 @@ botInit();
 http.createServer(function(request, response){
      
     response.end("Hello world!");
-}).listen(3000);
+}).listen(process.env.PORT || 8080);
