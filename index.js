@@ -79,7 +79,6 @@ async function botInit(){
 
 async function alertUsers(){
     const userBase = await getAllUsers();
-    //console.dir(userBase[0]);
     const job = new CronJob('* 1 * * * *', async()=>{
         const currTime = await convertTime();
         console.log(currTime);

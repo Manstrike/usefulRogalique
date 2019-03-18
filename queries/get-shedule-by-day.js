@@ -91,15 +91,10 @@ async function scheduleWithDay(day, chatId){
     });
 
     if(getShedule){
-        console.dir(getShedule);
         return getShedule;
     }
     console.log('xyi');
     return false;
 }
-
-getShedByDay({day:4, chatId: 204521174});
-
-
 
 module.exports = getShedByDay;
