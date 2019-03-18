@@ -18,7 +18,7 @@ async function setAlertTime(userId, time){
         WHERE chatID = ${userId}
     `);
 
-    if(query[0].changedRows > 0){
+    if(query.affectedRows > 0){
         return true;
     }
 
