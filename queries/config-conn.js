@@ -1,9 +1,11 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config()
 
-let connection;
+
 
 async function connectionConfig(){
+
+    let connection;
 
     if(!connection){
         connection = await mysql.createConnection({
