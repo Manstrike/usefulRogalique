@@ -78,21 +78,24 @@ async function botInit(){
 }
 
 async function alertUsers(){
-    const userBase = await getAllUsers();
-    const job = new CronJob('* 1 * * * *', async()=>{
+    
+    const job = new CronJob('* * * * * *', async()=>{
         const currTime = await convertTime();
+        const userBase = await getAllUsers();
         console.log(currTime);
         for (const user of userBase) {
             if(currTime === user.notif_config){
                 const currDay = moment().weekday();
+                const today = moment().day(String);
                 const dailySched = await getSheduleByDay({day: currDay, chatId: user.chatID});
-                const arr = [];
+                const arr = ['Доброго времени суток!',`Сегодня ${today}.`,`Ваше расписание на сегодня: `];
                 for (const less of dailySched){
                     const temp = [`${less.l_num}) -${less.arr.join(', ')}`]
                     arr.push(temp);
                 }
-
-                await bot.sendMessage(user.chatID, arr.join('\n'));
+            
+                console.log(arr);
+                await bot.sendMessage(Number(user.chatID), arr.join('\n'));
                 const currDate = await convertDate();
                 const lastSend = `${currDate} ${currTime}`;
                 const res = await setMark(user.chatID, lastSend);
