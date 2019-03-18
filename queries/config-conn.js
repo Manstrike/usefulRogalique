@@ -13,10 +13,12 @@ async function connectionConfig(){
             database: process.env.DB_NAME,
             insecureAuth : true,
         });
+        
+        return connection;
     }
     
 
-    return connection;
+    
 }
 
 module.exports = connectionConfig;
