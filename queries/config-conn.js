@@ -6,7 +6,7 @@ let connection;
 async function connectionConfig(){
 
     if(!connection){
-        connection = await mysql.createConnection({
+        connection = await mysql.createPool({
             host: process.env.DB_HOST,
             user: process.env.DB_USER,
             password: process.env.DB_PASS,
