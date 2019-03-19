@@ -12,17 +12,18 @@ let connection;
 async function setAlertTime(userId, time){
     connection = await configConn();
 
-    const query = connection.execute(`
+    const query = await connection.execute(`
         UPDATE user
         SET notif_config = '${time}', subscribe = 1    
         WHERE chatID = ${userId}
     `);
-
-    if(query.affectedRows > 0){
-        return true;
+    console.dir(query)
+    if(query[0].affectedRows>0){
+            return true;
+    }else{
+        return false;
     }
-
-    return false;
+        
 }
 
 module.exports = setAlertTime;

@@ -5,13 +5,13 @@ let connection;
 async function deleteAlert(userId){
     connection = await configConn();
 
-    const query = connection.excutes(`
+    const query = await connection.execute(`
         UPDATE user
         SET subscribe = 0
         WHERE chatID = ${userId}   
     `);
 
-    if(query[0].length > 0){
+    if(query[0].affectedRows > 0){
         return true;
     }
 

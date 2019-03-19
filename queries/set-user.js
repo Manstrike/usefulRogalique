@@ -1,4 +1,6 @@
 const conn = require('./config-conn.js');
+const getGroupId = require('./get-group-id');
+
 /**
      * @param {Object} msg Constains user's message info from chat.
      * @param {Object} match Here user's params from message.
@@ -19,8 +21,8 @@ const regUser = async function setUser(msg,match){
 
     const chatID = msg.chat.id;
 
-    const groupCode = Number(match[1]);
-
+    const groupCode = await getGroupId(match[1]);
+    console.log(groupCode);
     const username = msg.from.username;
 
     var fullName = ``;

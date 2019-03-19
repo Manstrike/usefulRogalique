@@ -21,31 +21,45 @@ const bot = new TelegramBot(token,{polling:true});
 
 async function botInit(){
     bot.onText(/\/start/, async (msg) =>{
+        
         const user = await getUser(msg.chat.id);
+        
         if(user[0] && user[0].chatID){
-            await bot.sendMessage(msg.chat.id,`Даров, ${user[0].name}`);
+            const message = [`Даров, ${user[0].name}`,
+                             `Напоминаю про список команд /help`];
+            await bot.sendMessage(msg.chat.id, message.join('\n'));
         }
         else{
-            await bot.sendMessage(msg.chat.id,`Похоже, мы с Вами еще не знакомы. Я - Рогалик. Полезный Рогалик.
-                                    Чтобы продолжить, введите команду /reg и код вашей группы.
-                                    Например, /reg ГГ123`);
+            const message =[`Похоже, мы с Вами еще не знакомы.`,
+                            `Я - Рогалик. Полезный Рогалик.`,
+                            `Чтобы продолжить, введите команду /reg и код вашей группы.`,
+                            `Например, /reg ГГ123`];
+            await bot.sendMessage(msg.chat.id, message.join('\n'));
         }
     });
 
     bot.onText(/\/reg (.+)/, async (msg, match) =>{
+        
         const checkUser = await getUser(msg.chat.id);
+        
         if(checkUser[0] && checkUser[0].chatID){
             await bot.sendMessage(msg.chat.id,`Кажется, вы уже в базе.`);
         }else{
+            
             const tryReg = await setUser(msg, match);
+            
             if(tryReg){
-                await bot.sendMessage(msg.chat.id,`Успешно!`);
+                const message = [`Успешно!`, `Чтобы ознакомится со списком доступных команд введите /help`];
+                
+                await bot.sendMessage(msg.chat.id, message.join('\n'));
             }
         }
     });
 
     bot.onText(/\/review/, async (msg) =>{
+        
         const schedule = await schedConvert2pdf(msg);
+       
         if(schedule){
             const fileOptions = {
                 filename: `Расписание`,
@@ -57,7 +71,10 @@ async function botInit(){
     });
 
     bot.onText(/\/time (.+)/, async (msg,match)=>{
+        
         const setTime = await addAlert(msg.chat.id, match[1]);
+       
+        console.log(setTime);
         if(setTime){
             await bot.sendMessage(msg.chat.id, `Установлено время оповещения: ${match[1]}`);
         }else{
@@ -74,6 +91,43 @@ async function botInit(){
         }
     });
 
+    bot.onText(/\/remind/, async (msg)=>{
+        const currDay = moment().weekday();
+
+        const dailySched = await getSheduleByDay({day: currDay, chatId: msg.chat.id});
+        
+        const week = await evenWeek();
+        
+        if(dailySched){
+            const arr = [`Текущая неделя: ${week}`,
+                         `Ваше расписание на сегодня: `];
+            for (const less of dailySched){
+                const temp = [`${less.l_num}) -${less.arr.join(', ')}`]
+                arr.push(temp);
+            }
+
+            await bot.sendMessage(msg.chat.id, arr.join('\n'));
+        };
+    });
+
+    bot.onText(/\/git/, async (msg)=>{
+        const url = 'https://github.com/Manstrike/usefulRogalique';
+        const message = [`Страница проекта`, url];
+
+        await bot.sendMessage(msg.chat.id, message.join('\n'));
+    })
+
+    bot.onText(/\/help/, async (msg)=>{
+        const message = ['Список доступных команд:',
+                         '/time HH:MM:SS - установить время оповещения.',
+                         '/off - отключить оповещения.',
+                         '/review - получить Ваше текущее расписание.',
+                         '/remind - напомнить неделю/расписание на день.',
+                         '/git - страница проекта',
+                         '"Далі буде!"'];
+        await bot.sendMessage(msg.chat.id, message.join('\n'));
+    });
+
     const alert = await alertUsers();
 }
 
@@ -82,13 +136,20 @@ async function alertUsers(){
     const job = new CronJob('* * * * * *', async()=>{
         const currTime = await convertTime();
         const userBase = await getAllUsers();
-        console.log(currTime);
+        if(userBase === false){
+            return;
+        }
+        //console.log(userBase);
         for (const user of userBase) {
             if(currTime === user.notif_config){
                 const currDay = moment().weekday();
-                const today = moment().day(String);
+                const today = moment().day(String).format('dddd DD');
                 const dailySched = await getSheduleByDay({day: currDay, chatId: user.chatID});
-                const arr = ['Доброго времени суток!',`Сегодня ${today}.`,`Ваше расписание на сегодня: `];
+                const week = await evenWeek();
+                const arr = ['Доброго времени суток!',
+                             `Сегодня ${today}.`,
+                             `Неделя #${week}.`,
+                             `Ваше расписание на сегодня: `];
                 for (const less of dailySched){
                     const temp = [`${less.l_num}) -${less.arr.join(', ')}`]
                     arr.push(temp);
@@ -106,6 +167,14 @@ async function alertUsers(){
     await job.start();
     return;
 }
+
+async function evenWeek(){
+
+    var currWeek = moment().week(Number).format('w');
+
+    return currWeek - 8; 
+}
+
 
 botInit();
 
