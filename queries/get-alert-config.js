@@ -7,7 +7,7 @@ let connection;
 async function getAlertConfig(){
     connection = await configConn();
 
-    const query = connection.execute(`
+    const query = await connection.execute(`
         SELECT notif_config 
         FROM user
         WHERE subscribe = 1

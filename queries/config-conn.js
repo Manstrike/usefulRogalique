@@ -1,16 +1,22 @@
 const mysql = require('mysql2/promise');
-const env = require('./env-db');
+require('dotenv').config()
 
+let connection;
 
 async function connectionConfig(){
-    const connection = await mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: env.db_password,
-        database: 'shedulerdb',
-    });
 
+    if(!connection){
+        connection = await mysql.createPool({
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASS,
+            database: process.env.DB_NAME,
+            insecureAuth : true,
+        });
+    }
+    
     return connection;
+    
 }
 
 module.exports = connectionConfig;
