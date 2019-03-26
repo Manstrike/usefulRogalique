@@ -21,7 +21,6 @@ const bot = new TelegramBot(token,{polling:true});
 
 async function botInit(){
     bot.onText(/\/start/, async (msg) =>{
-        
         const user = await getUser(msg.chat.id);
         
         if(user[0] && user[0].chatID){
