@@ -43,10 +43,10 @@ async function scheduleWithMSG(msg){
 
     var currWeek = moment(msg.date).weeksInYear();
 
-    if(currWeek % 2 ===0){
-        currWeek = 0;
-    }else{
+    if(currWeek % 2 === 0){
         currWeek = 1;
+    }else{
+        currWeek = 0;
     }
     
     const getDayID = await connection.execute(`
@@ -72,10 +72,10 @@ async function scheduleWithMSG(msg){
 async function scheduleWithDay(day, chatId){
     const date = new Date();
     var currWeek = moment().weeksInYear();
-    if(currWeek % 2 ===0){
-        currWeek = 0;
-    }else{
+    if(currWeek % 2 === 0){
         currWeek = 1;
+    }else{
+        currWeek = 0;
     }
 
     const getDayID = await connection.execute(`
